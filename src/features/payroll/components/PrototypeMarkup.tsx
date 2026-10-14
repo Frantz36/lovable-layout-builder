@@ -32,6 +32,7 @@ export function PrototypeMarkup({ html, actions }: { html: string; actions: Reco
       }
       if (dom.name === 'option') { delete props['selected']; return createElement('option', props, children); }
       if (dom.name === 'table') return <div className="table-scroll">{createElement('table', props, children)}</div>;
+      if (['br', 'hr', 'img', 'wbr', 'area', 'base', 'col', 'embed', 'link', 'meta', 'param', 'source', 'track'].includes(dom.name)) return createElement(dom.name, props);
       if (handlers['onClick'] && !['tr', 'td', 'a'].includes(dom.name)) {
         props['role'] = 'button'; props['tabIndex'] = 0;
         props['onKeyDown'] = (event: { key: string; currentTarget: EventTarget; nativeEvent: Event; preventDefault: () => void }) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); runViewAction(dom.attribs['onclick'] ?? '', actions, event.currentTarget, event.nativeEvent); } };
