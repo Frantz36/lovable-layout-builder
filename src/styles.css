@@ -170,7 +170,7 @@
 
 
 *{box-sizing:border-box;}
-body{margin:0;font-family:'Segoe UI',-apple-system,Helvetica,Arial,sans-serif;color:var(--dark);background:var(--grey-bg);font-size:14px;}
+body{margin:0;font-family:'Segoe UI',-apple-system,Helvetica,Arial,sans-serif;color:var(--dark);background:var(--grey-bg);font-size:14px;line-height:normal;}
 #app{display:flex;min-height:100vh;}
 
 /* Sidebar */
@@ -379,6 +379,7 @@ table.data tr.inactive td{opacity:0.55;}
 .payroll-button.nav-item.active { font-weight:700; background:var(--gold); }
 .payroll-button.role-btn { height:auto; }
 .sidebar-toggle { display:none; }
+#topbar .sidebar-toggle { color:var(--surface); }
 .table-scroll { overflow-x:auto; }
 #modalOverlay { display:flex; }
 #content table.data { min-width:0; }
