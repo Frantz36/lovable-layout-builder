@@ -16,19 +16,19 @@ export function PrototypeMarkup({ html, actions }: { html: string; actions: Reco
           delete attributes[attribute];
         }
       }
-      const props = { ...attributesToProps(attributes), ...handlers };
+      const props: Record<string, unknown> = { ...attributesToProps(attributes), ...handlers };
       const children = domToReact(dom.children as DOMNode[], options);
-      if (dom.name === 'button') return <Button {...props} className={`payroll-button ${attributes['class'] ?? ''}`} htmlType="button">{children}</Button>;
+      if (dom.name === 'button') return <Button {...props} type="text" className={`payroll-button ${attributes['class'] ?? ''}`} htmlType="button">{children}</Button>;
       if (dom.name === 'input') {
         const inputProps = props as Record<string, unknown>;
         if ('value' in inputProps) { inputProps['defaultValue'] = inputProps['value']; delete inputProps['value']; }
         if ('checked' in inputProps) { inputProps['defaultChecked'] = inputProps['checked']; delete inputProps['checked']; }
-        return createElement('input', inputProps);
+        return createElement('input', { ...inputProps, key: `${attributes['id'] ?? ''}-${attributes['value'] ?? ''}-${attributes['checked'] ?? ''}` });
       }
       if (dom.name === 'select') {
         const selected = dom.children.find(child => child instanceof Element && 'selected' in child.attribs);
         if (selected instanceof Element) props['defaultValue'] = selected.attribs['value'] ?? selected.children.map(child => 'data' in child ? child.data : '').join('');
-        return createElement('select', props, children);
+        return createElement('select', { ...props, key: `${attributes['id'] ?? ''}-${String(props['defaultValue'] ?? '')}` }, children);
       }
       if (dom.name === 'option') { delete props['selected']; return createElement('option', props, children); }
       if (dom.name === 'table') return <div className="table-scroll">{createElement('table', props, children)}</div>;

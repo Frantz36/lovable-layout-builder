@@ -381,7 +381,18 @@ table.data tr.inactive td{opacity:0.55;}
 .sidebar-toggle { display:none; }
 .table-scroll { overflow-x:auto; }
 #modalOverlay { display:flex; }
-#content table.data { min-width:480px; }
+#content table.data { min-width:0; }
+.grid2 > *, .grid3 > * { min-width:0; }
+#sidebar .brand b { white-space:nowrap; }
+#sidebar .brand .reset { padding:0; font-size:9.5px; height:auto; }
+#topbar #companyLine { color:var(--chrome-muted); }
+#topbar .bell { color:var(--surface); padding:0; font-size:16px; overflow:visible; }
+.signed-in-name { color:var(--surface); }
+.switch-user { color:var(--gold-light); font-size:11px; padding:0; }
+.read-only-label { color:var(--gold); }
+#regPageOverlay { position:fixed; inset:0; background:var(--navy); z-index:2000; overflow-y:auto; display:flex; align-items:center; justify-content:center; padding:40px 20px; }
+h1.title, h2.section { font-weight:700; }
+.card h2.section { margin-top:0; }
 .prototype-dialog { white-space:pre-line; }
 @media(max-width:640px) {
  #sidebar { width:170px; position:fixed; z-index:40; }
@@ -395,5 +406,6 @@ table.data tr.inactive td{opacity:0.55;}
  .kpis { grid-template-columns:repeat(2,minmax(0,1fr)); }
  .kpi { padding:12px 10px; } .kpi .v { font-size:16px; overflow-wrap:anywhere; }
  .modal-body { max-height:65vh; }
+ #content table.data { min-width:480px; }
 }
 @media(prefers-reduced-motion:reduce) { * { animation:none!important; transition:none!important; } }
