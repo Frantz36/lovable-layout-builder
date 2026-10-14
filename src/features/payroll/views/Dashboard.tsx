@@ -1,0 +1,2 @@
+import { PrototypeMarkup } from '../components/PrototypeMarkup';
+export function Dashboard({ html, actions }: { html: string; actions: Record<string, unknown> }) { return <PrototypeMarkup html={html} actions={actions} />; }
