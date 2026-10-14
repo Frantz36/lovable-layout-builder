@@ -1,0 +1,2 @@
+import type { PayrollEngine } from '../types';
+export function createPayrollEngine(onChange: () => void, dialogs: { alert: (text: string) => void; confirm: (text: string, onConfirm?: () => void) => boolean }): PayrollEngine;
